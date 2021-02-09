@@ -1,0 +1,46 @@
+#应用名称及验证账号
+spring:
+  application:
+    name: api-airport
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/CHUAV
+#注册中心
+eureka:
+  client:
+    #设置服务注册中心的URL
+    service-url:
+      defaultZone: http://root:root@euk1.com:7901/eureka/
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #yml加双引号，properties不用加
+        include: "*"
+logging:
+  level:
+    org.springframework.cloud: info
+    org.springframework.boot: info
+
+# 服务端开启压缩，传输量小了，但是消耗了CPU进行解压
+#server:
+#  compression:
+#    enabled: true
+
+---
+spring:
+  profiles: 9101
+#服务端口
+server:
+  port: 9101
+---
+spring:
+  profiles: 9102
+#服务端口
+server:
+  port: 9102
