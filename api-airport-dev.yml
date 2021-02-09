@@ -6,6 +6,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/CHUAV
+  cloud:
+    config:
+      override-none: true
 #注册中心
 eureka:
   client:
